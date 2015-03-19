@@ -7,6 +7,11 @@
      padding: 0px;
 }
 
+.create.post
+{
+     padding: 12px;
+}
+
 .post {
      background: #fff;
      border: 1px solid;

@@ -1,25 +1,41 @@
-## Laravel PHP Framework
+## Facer - Barebones Social Network
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Facer is a Barebones Social Network built in PHP with *Laravel 4*.
+It is designed as a Facebook themed robust base for developing more complex and sophisticated software.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+[Screenshots](http://imgur.com/a/42Ez6)
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+### Features (or planned features)
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+- A Newsfeed
+- Posts
+- Likes, Comments
+- Friendships
+- Messaging
+- Events
 
-## Official Documentation
+### Setup
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+(You will need [Composer](https://getcomposer.org))
 
-### Contributing To Laravel
+*To set up for the first time:*
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+1. Clone the repository
+2. Run "composer update" from the command line
+3. Create a facer database
+4. Set up app/config/database.php
+5. Run "php artisan migrate" this will set up the tables
+6. If you want to create dummy users use "php artisan db:seed"
+7. Run "php artisan serve" will start up the web server.
 
-### License
+*If you are updating:*
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+1. Run "composer update" to update any dependencies
+2. Run "php artisan migrate" to update any database changes
+
+
+### Links
+
+- [Laravel](http://laravel.com)
+- [Composer](https://getcomposer.org)
+- [Flatly Bootstrap Theme](https://bootswatch.com/flatly/)

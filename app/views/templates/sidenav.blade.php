@@ -1,7 +1,7 @@
 <div class="sidenav" style="text-align: center;">
     <img src="./images/profile/1.png" class="img-rounded">
     <p>
-        Katie Paxton-Fear<br/>
+        Lue Schultz<br/>
         Edit Profile
     </p>
     <ul>

@@ -1,7 +1,7 @@
 @extends('templates.default')
 
 @section('content')
-	<div class="post">
+	<div class="create post">
 		{{ Form::open(array('url' => '/', 'method' => 'post', 'class' => 'form-horizontal')) }}
 			{{Form::textarea('post', null, array('placeholder' => "What's on your mind?", 'class'=> 'form-control', 'rows'=>'2'))}}
 			<div class="submit">
