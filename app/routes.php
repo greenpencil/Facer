@@ -10,5 +10,8 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
-Route::get('/',  array('as' => 'newsfeed', 'uses' =>'NewsFeed@show'));
+if(Auth::check()) {
+    Route::get('/', array('as' => 'newsfeed', 'uses' => 'PageController@newsFeed'));
+}else{
+    Route::get('/', array('as' => 'login', 'uses' => 'PageController@homePage'));
+}

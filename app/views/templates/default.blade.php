@@ -18,11 +18,10 @@
     <![endif]-->
 </head>
 <body>
-@include('templates.navbar')
+    @include('templates.navbar')
     <div class="container">
         <div class="row">
-            <div class="col-md-2">@include('templates.sidenav')</div>
-            <div class="col-md-10">@yield('content')</div>
+            @yield('content')
         </div>
     </div>
 
