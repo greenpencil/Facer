@@ -16,4 +16,7 @@ if(Auth::check()) {
     Route::get('/', array('as' => 'login', 'uses' => 'PageController@homePage'));
 }
 
+// Routes for the authentication system
 Route::post('/login', array('uses' => 'UserController@login'));
+Route::post('/register', array('uses' => 'UserController@register'));
+Route::get('/logout', array('uses' => 'UserController@logout'));

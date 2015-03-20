@@ -4,7 +4,7 @@ class PageController extends \BaseController {
 
 	public function newsFeed()
 	{
-		$posts = Post::all()->sortBy('created_at');
+		$posts = Post::orderBy('created_at', 'DESC')->get();
 		return View::make('pages.newsfeed', ['posts' => $posts]);
 	}
 
