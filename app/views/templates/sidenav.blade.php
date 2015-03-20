@@ -1,7 +1,7 @@
 <div class="sidenav" style="text-align: center;">
-    <img src="./images/profile/1.png" class="img-rounded">
+    <img src="./images/profile/{{Auth::user()->id}}.png" class="img-rounded">
     <p>
-        Lue Schultz<br/>
+        {{Auth::user()->first_name}} {{Auth::user()->last_name}}<br/>
         Edit Profile
     </p>
     <ul>
