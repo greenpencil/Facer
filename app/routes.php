@@ -15,3 +15,5 @@ if(Auth::check()) {
 }else{
     Route::get('/', array('as' => 'login', 'uses' => 'PageController@homePage'));
 }
+
+Route::post('/login', array('uses' => 'UserController@login'));

@@ -1,6 +1,12 @@
 @extends('templates.default')
 
 @section('content')
+	@if (Session::has('login_success'))
+		<div class="alert alert-dismissible alert-success">
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			<strong>Login Success! </strong> {{ Session::get('login_success') }}
+		</div>
+	@endif
 	<div class="col-md-2">@include('templates.sidenav')</div>
 	<div class="col-md-10">
 		<div class="create post">

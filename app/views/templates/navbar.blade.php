@@ -67,13 +67,13 @@
             </div>
         @else
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <form class="navbar-form navbar-right" role="login">
+                {{ Form::open(array('class' => 'navbar-form navbar-right', 'role'=> 'login', 'url' => '/login', 'method' => 'POST')) }}
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Email" style="width: 200px;">
-                        <input type="password" class="form-control" placeholder="Password" style="width: 200px;">
-                        <button type="submit" class="btn btn-default">Login</button>
+                        {{Form::text('email', null, array('placeholder' => 'Email', 'class'=> 'form-control'))}}
+                        {{Form::password('password', array('placeholder' => 'Password', 'class'=> 'form-control'))}}
+                        {{Form::submit('Sign Up',array('class'=> 'btn btn-default'))}}
                     </div>
-                </form>
+                {{Form::close()}}
             </div>
         @endif
     </div>
