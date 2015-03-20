@@ -14,7 +14,17 @@
         </div>
     @endif
 
-    <div class="col-md-7" style="text-align: center;"><img src="./images/globe.png"></div>
+    <div class="col-md-7">
+        <h2>What is this?</h2>
+        <p>This is the demo of Facer, a Facebook-like social network. It is designed as a robust framework for people
+        wanting to build their own social network software. It's built in PHP using Laravel and is completely open
+        source. <a href="http://github.com/greenpencil/facer">Find out more on GitHub</a>.</p>
+        <h3>About the Developer</h3>
+        <p>Facer was built by Katie Paxton-Fear, a Computer Science student at the University of Salford, Manchester.
+            She is easily bored and needs more things to do with her time.
+        You can <a href="http://twitter.com/greenpencillp">follow her on Twitter</a> or <a href="http://www.kpf.io/">visit her website</a> to find out more.</p>
+    </div>
+
     <div class="col-md-5">
         <h2>Sign Up!</h2>
         <h4>Facer is free forever</h4>

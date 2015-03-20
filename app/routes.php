@@ -20,3 +20,10 @@ if(Auth::check()) {
 Route::post('/login', array('uses' => 'UserController@login'));
 Route::post('/register', array('uses' => 'UserController@register'));
 Route::get('/logout', array('uses' => 'UserController@logout'));
+
+// Routes for the post system
+Route::any('/post/create', array('uses' => 'PostController@create'))->before(Auth::check());
+Route::post('/post/remove', array('uses' => 'PostController@remove'))->before(Auth::check());
+
+// Routes for the comment system
+

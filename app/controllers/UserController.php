@@ -43,8 +43,8 @@ class UserController extends \BaseController {
 				'first_name' => 'Required|Min:3|Max:20|Alpha',
 				'last_name' => 'Required|Min:3|Max:20|Alpha',
 				'email' => 'required|email|min:5',
-				'password'  =>'Required|AlphaNum|Between:4,8|Confirmed',
-				'password_confirmation'=>'Required|AlphaNum|Between:4,8'
+				'password'  =>'Required|AlphaNum|Between:4,30|Confirmed',
+				'password_confirmation'=>'Required|AlphaNum|Between:4,30'
 			]
 		);
 		if($validator->fails()){

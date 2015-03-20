@@ -3,7 +3,7 @@
 class Post extends \Eloquent {
 	protected $table = 'posts';
 
-	protected $fillable = [];
+	protected $fillable = ['user_id', 'text'];
 
 	public function comments()
 	{

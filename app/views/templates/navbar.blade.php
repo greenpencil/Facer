@@ -71,7 +71,7 @@
                     <div class="form-group">
                         {{Form::text('email', null, array('placeholder' => 'Email', 'class'=> 'form-control'))}}
                         {{Form::password('password', array('placeholder' => 'Password', 'class'=> 'form-control'))}}
-                        {{Form::submit('Sign Up',array('class'=> 'btn btn-default'))}}
+                        {{Form::submit('Login',array('class'=> 'btn btn-default'))}}
                     </div>
                 {{Form::close()}}
             </div>
