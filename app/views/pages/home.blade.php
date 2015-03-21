@@ -49,7 +49,7 @@
             {{Form::text('last_name', null, array('placeholder' => 'Last Name', 'class'=> 'form-control'))}}
         </div>
         <div class="form-group">
-            {{Form::text('email', null, array('placeholder' => 'Email', 'class'=> 'form-control'))}}
+            {{Form::text('register_email', null, array('placeholder' => 'Email', 'class'=> 'form-control'))}}
         </div>
         <div class="form-group">
             {{Form::password('password', array('placeholder' => 'Password', 'class'=> 'form-control'))}}

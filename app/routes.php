@@ -22,8 +22,8 @@ Route::post('/register', array('uses' => 'UserController@register'));
 Route::get('/logout', array('uses' => 'UserController@logout'));
 
 // Routes for the post system
-Route::any('/post/create', array('uses' => 'PostController@create'))->before(Auth::check());
-Route::post('/post/remove', array('uses' => 'PostController@remove'))->before(Auth::check());
+Route::post('/post/new', array('before' => 'auth', 'uses' => 'PostController@create'));
+Route::post('/post/delete', array('before' => 'auth','uses' => 'PostController@remove'));
 
 // Routes for the comment system
 

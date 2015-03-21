@@ -69,7 +69,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 {{ Form::open(array('class' => 'navbar-form navbar-right', 'role'=> 'login', 'url' => '/login', 'method' => 'POST')) }}
                     <div class="form-group">
-                        {{Form::text('email', null, array('placeholder' => 'Email', 'class'=> 'form-control'))}}
+                        {{Form::text('email', null, array('id'=>'login','placeholder' => 'Email', 'class'=> 'form-control'))}}
                         {{Form::password('password', array('placeholder' => 'Password', 'class'=> 'form-control'))}}
                         {{Form::submit('Login',array('class'=> 'btn btn-default'))}}
                     </div>
