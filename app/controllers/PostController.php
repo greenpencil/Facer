@@ -19,6 +19,16 @@ class PostController extends \BaseController {
 		return Redirect::to('/');
 	}
 
+	public function comment($post_id)
+	{
+		Comment::create(array(
+			'post_id' => $post_id,
+			'text' => Input::get('text'),
+			'user_id' => Auth::user()->id
+		));
+		return Redirect::to('/');
+	}
+
 	public function like($post_id)
 	{
 		Like::create(array(

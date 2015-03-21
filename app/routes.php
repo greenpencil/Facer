@@ -23,9 +23,11 @@ Route::get('/logout', array('uses' => 'UserController@logout'));
 
 // Routes for the post system
 Route::post('/post/new', array('before' => 'auth', 'uses' => 'PostController@create'));
-Route::post('/post/delete', array('before' => 'auth','uses' => 'PostController@remove'));
+//Route::post('/post/delete', array('before' => 'auth','uses' => 'PostController@remove'));
 
 // Routes for the comment system
+Route::post('/comment/new/{post_id}', array('before' => 'auth', 'uses' => 'PostController@comment'));
+//Route::get('/comment/remove/{post_id}', array('before' => 'auth', 'uses' => 'PostController@unlike'));
 
 // Routes for liking posts
 Route::get('/like/{post_id}', array('before' => 'auth', 'uses' => 'PostController@like'));

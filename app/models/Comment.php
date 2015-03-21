@@ -3,7 +3,7 @@
 class Comment extends \Eloquent {
 	protected $table = 'comments';
 
-	protected $fillable = [];
+	protected $fillable = ['post_id', 'user_id', 'text'];
 
 	public function user()
 	{

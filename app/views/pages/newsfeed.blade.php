@@ -47,7 +47,7 @@
 						@else
 							<li><a href="/like/{{ $post->id}}">like</a> ·</li>
 						@endif
-						<li> Comment ·</li>
+						<li> <a data-toggle="collapse" href="#post-comment-{{ $post->id}}" aria-expanded="false" aria-controls="post-comment-{{ $post->id}}" >Comment</a> ·</li>
 						<li> Share</li>
 					</ul>
 				</div>
@@ -66,11 +66,23 @@
 							@endforeach
 							like this.
 						</div>
-					@elseif($post->likes->count() == 4)
+					@elseif($post->likes->count() == 3)
 						<div class="likes">
-							{{$post->likes->count()}} people like this.
+							<a href="">{{$post->likes->count()}} people</a> like this.
 						</div>
 					@endif
+					<div class="collapse" id="post-comment-{{ $post->id}}" style="padding: 10px 30px 0 30px;">
+						{{ Form::open(array('url' => '/comment/new/'.$post->id, 'method' => 'post', 'class' => 'form-horizontal')) }}
+						<div class="row">
+							<div class="col-md-11">
+								{{Form::textarea('text', null, array('placeholder' => "Write a Comment...", 'class'=> 'form-control', 'rows'=>'1'))}}
+							</div>
+							<div class="col-md-1">
+								{{Form::submit('Post',array('class'=> 'btn btn-primary'))}}
+							</div>
+						</div>
+						{{ Form::close() }}
+					</div>
 					@foreach($post->comments as $comment)
 						<div class="comment">
 							<img src="./images/profile/{{ $comment->user->id}}.png" height="30px" class="img-rounded avatar">
