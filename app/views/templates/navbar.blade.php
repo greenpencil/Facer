@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Facer</a>
+            <a class="navbar-brand" href="/">Facer</a>
         </div>
 
         @if(Auth::check())
@@ -20,19 +20,42 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-users"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <i class="fa fa-users"></i>
+                            @if(Auth::user()->hasFriendRequest->count() > 0)
+                                <span class="badge">{{Auth::user()->hasFriendRequest->count()}}</span>
+                              @endif
+                        </a>
+                        <ul class="requests dropdown-menu" role="menu">
+                            @if(Auth::user()->hasFriendRequest->count() > 0)
+                                @foreach (Auth::user()->hasFriendRequest as $request)
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img src="/images/profile/{{ $request->id }}.png" height="40px" class="img-rounded avatar">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <li><a href="/profile/{{$request->username}}">{{ $request->first_name}} {{ $request->last_name }}</a></li>
+                                        <li>{{ $request->created_at->diffForHumans() }}</li>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="btn btn-info" href="/acceptfriend/{{ $request->id }}">Accept</a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="btn btn-default" href="/declinefriend/{{ $request->id }}">Decline</a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            @else
+                                <div class="row">
+                                    No friend requests! :(
+                                </div>
+                            @endif
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments"></i></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <i class="fa fa-comments"></i>
+                        </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>

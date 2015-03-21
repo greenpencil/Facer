@@ -98,3 +98,18 @@
      font-size: 12px;
      color: #9197a3;
 }
+
+.requests {
+     padding: 3px 20px;
+     clear: both;
+     font-weight: normal;
+     line-height: 1.42857143;
+     color: #7b8a8b;
+     white-space: nowrap;
+     min-width: 400px;
+}
+
+.requests>.row {
+     padding: 10px 0px;
+     border-bottom: 1px solid #e1e2e3;
+}

@@ -34,6 +34,11 @@ Route::get('/like/{post_id}', array('before' => 'auth', 'uses' => 'PostControlle
 Route::get('/unlike/{post_id}', array('before' => 'auth', 'uses' => 'PostController@unlike'));
 
 
+// Routes for friends
+Route::get('/acceptfriend/{user_id}', array('before' => 'auth', 'uses' => 'UserController@acceptFriendRequest'));
+Route::get('/declinefriend/{user_id}', array('before' => 'auth', 'uses' => 'UserController@declineFriendRequest'));
+Route::get('/newfriend/{user_id}', array('before' => 'auth', 'uses' => 'UserController@newFriendRequest'));
+
 // This is all very confusing
 Route::get('/test', function()
 {
