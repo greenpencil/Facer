@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRelationships extends Migration {
+class AddForeignKeys extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -24,6 +24,16 @@ class CreateRelationships extends Migration {
 		Schema::table('likes', function($table) {
 			$table->foreign('post_id')->references('id')->on('posts');
 			$table->foreign('user_id')->references('id')->on('users');
+		});
+
+		Schema::table('friends', function($table) {
+			$table->foreign('user_id')->references('id')->on('users');
+			$table->foreign('user_id_2')->references('id')->on('users');
+		});
+
+		Schema::table('frequests', function($table) {
+			$table->foreign('user_id')->references('id')->on('users');
+			$table->foreign('user_id_2')->references('id')->on('users');
 		});
 	}
 
