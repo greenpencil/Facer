@@ -17,30 +17,33 @@ if(Auth::check()) {
 }
 
 // Routes for the authentication system
-Route::post('/login', array('uses' => 'UserController@login'));
-Route::post('/register', array('uses' => 'UserController@register'));
-Route::get('/logout', array('uses' => 'UserController@logout'));
+Route::post('login', array('uses' => 'UserController@login'));
+Route::post('register', array('uses' => 'UserController@register'));
+Route::get('logout', array('uses' => 'UserController@logout'));
 
 // Routes for the post system
-Route::post('/post/new', array('before' => 'auth', 'uses' => 'PostController@create'));
+Route::post('post/new', array('before' => 'auth', 'uses' => 'PostController@create'));
 //Route::post('/post/delete', array('before' => 'auth','uses' => 'PostController@remove'));
 
 // Routes for the comment system
-Route::post('/comment/new/{post_id}', array('before' => 'auth', 'uses' => 'PostController@comment'));
+Route::post('comment/new/{post_id}', array('before' => 'auth', 'uses' => 'PostController@comment'));
 //Route::get('/comment/remove/{post_id}', array('before' => 'auth', 'uses' => 'PostController@unlike'));
 
 // Routes for liking posts
-Route::get('/like/{post_id}', array('before' => 'auth', 'uses' => 'PostController@like'));
-Route::get('/unlike/{post_id}', array('before' => 'auth', 'uses' => 'PostController@unlike'));
+Route::get('like/{post_id}', array('before' => 'auth', 'uses' => 'PostController@like'));
+Route::get('unlike/{post_id}', array('before' => 'auth', 'uses' => 'PostController@unlike'));
 
 
 // Routes for friends
-Route::get('/acceptfriend/{user_id}', array('before' => 'auth', 'uses' => 'UserController@acceptFriendRequest'));
-Route::get('/declinefriend/{user_id}', array('before' => 'auth', 'uses' => 'UserController@declineFriendRequest'));
-Route::get('/newfriend/{user_id}', array('before' => 'auth', 'uses' => 'UserController@newFriendRequest'));
+Route::get('acceptfriend/{user_id}', array('before' => 'auth', 'uses' => 'UserController@acceptFriendRequest'));
+Route::get('declinefriend/{user_id}', array('before' => 'auth', 'uses' => 'UserController@declineFriendRequest'));
+Route::get('newfriend/{user_id}', array('before' => 'auth', 'uses' => 'UserController@newFriendRequest'));
+
+//Routes for profiles
+
 
 // This is all very confusing
-Route::get('/test', function()
+Route::get('test', function()
 {
     foreach (Auth::user()->hasFriends as $user)
     {
