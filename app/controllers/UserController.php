@@ -56,4 +56,23 @@ class UserController extends \BaseController {
 			return Redirect::to('/')->with('login_success', 'Hey ' . Auth::user()->first_name .' welcome to Facer.');;
 		}
 	}
+
+	public function newFriendRequest($user_id)
+	{
+		Auth::user()->madeFriendRequest()->attach($user_id);
+		return Redirect::to('/profile/'.$user_id);
+	}
+
+	public function declineFriendRequest($user_id)
+	{
+		Auth::user()->hasFriendRequest()->detach($user_id);
+		return Redirect::to('/');
+	}
+
+	public function acceptFriendRequest($user_id)
+	{
+		Auth::user()->madeFriends()->attach($user_id);
+		Auth::user()->hasFriendRequest()->detach($user_id);
+		return Redirect::to('/');
+	}
 }

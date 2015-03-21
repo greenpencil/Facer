@@ -34,7 +34,7 @@
 			<div class="post">
 				<div class="title">
 					<img src="./images/profile/{{$post->user->id}}.png" height="50px" class="img-rounded avatar">
-					{{ $post->user->first_name}} {{$post->user->last_name}}
+					<a href="/profile/{{$post->user->id}}">{{ $post->user->first_name}} {{$post->user->last_name}}</a>
 					<span class="details">{{ $post->created_at->diffForHumans() }}</span>
 				</div>
 				<div class="text">
@@ -55,14 +55,14 @@
 					@if($post->likes->count() == 1)
 						<div class="likes">
 							@foreach($post->likes as $like)
-									{{ $like->user->first_name }} {{ $like->user->last_name }}
+								<a href="/profile/{{$like->user->id}}">{{ $like->user->first_name }} {{ $like->user->last_name }}</a>
 							@endforeach
 								likes this.
 						</div>
 					@elseif($post->likes->count() == 2)
 						<div class="likes">
 							@foreach($post->likes as $like)
-								{{ $like->user->first_name }} {{ $like->user->last_name }} and
+								<a href="/profile/{{$like->user->id}}">{{ $like->user->first_name }} {{ $like->user->last_name }}</a> and
 							@endforeach
 							like this.
 						</div>
@@ -86,7 +86,7 @@
 					@foreach($post->comments as $comment)
 						<div class="comment">
 							<img src="./images/profile/{{ $comment->user->id}}.png" height="30px" class="img-rounded avatar">
-							<span class="name">{{ $comment->user->first_name}} {{$comment->user->last_name}}</span>
+							<span class="name"><a href="/profile/{{ $comment->user->username}}">{{ $comment->user->first_name}} {{$comment->user->last_name}}</a></span>
 							<span class="text">{{$comment->text}}</span>
 							<div class="details">Like · {{$comment->created_at->diffForHumans()}}</div>
 						</div>
