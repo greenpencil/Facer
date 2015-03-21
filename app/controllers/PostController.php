@@ -19,4 +19,19 @@ class PostController extends \BaseController {
 		return Redirect::to('/');
 	}
 
+	public function like($post_id)
+	{
+		Like::create(array(
+			'post_id' => $post_id,
+			'user_id' => Auth::user()->id
+		));
+		return Redirect::to('/');
+	}
+
+	public function unlike($post_id)
+	{
+		Like::where('post_id', '=', $post_id)->where('user_id', '=', Auth::user()->id)->delete();
+		return Redirect::to('/');
+	}
+
 }

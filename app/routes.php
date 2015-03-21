@@ -27,3 +27,6 @@ Route::post('/post/delete', array('before' => 'auth','uses' => 'PostController@r
 
 // Routes for the comment system
 
+// Routes for liking posts
+Route::get('/like/{post_id}', array('before' => 'auth', 'uses' => 'PostController@like'));
+Route::get('/unlike/{post_id}', array('before' => 'auth', 'uses' => 'PostController@unlike'));

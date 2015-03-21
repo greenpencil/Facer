@@ -30,7 +30,6 @@
 			{{ Form::close() }}
 		</div>
 
-
 		@foreach($posts as $post)
 			<div class="post">
 				<div class="title">
@@ -43,7 +42,11 @@
 				</div>
 				<div class="options">
 					<ul>
-						<li>Like ·</li>
+						@if(in_array($post->id, $likes->toArray()))
+							<li><a href="/unlike/{{ $post->id}}">unlike</a> ·</li>
+						@else
+							<li><a href="/like/{{ $post->id}}">like</a> ·</li>
+						@endif
 						<li> Comment ·</li>
 						<li> Share</li>
 					</ul>

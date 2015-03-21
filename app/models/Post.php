@@ -19,4 +19,9 @@ class Post extends \Eloquent {
 	{
 		return $this->belongsTo('User');
 	}
+
+	public function isLiked($post)
+	{
+
+	}
 }
