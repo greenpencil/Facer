@@ -7,10 +7,14 @@ It is designed as a Facebook themed robust base for developing more complex and 
 
 ### Features (or planned features)
 
-- A Newsfeed
-- Posts
-- Likes, Comments
-- Friendships
+([X] denotes that it is completed)
+
+- A Newsfeed [X]
+- Posts [X]
+- Likes [X]
+- Comments [X]
+- Friendships [X]
+- User Profiles
 - Messaging
 - Events
 
