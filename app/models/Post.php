@@ -3,7 +3,7 @@
 class Post extends \Eloquent {
 	protected $table = 'posts';
 
-	protected $fillable = [];
+	protected $fillable = ['user_id', 'text'];
 
 	public function comments()
 	{
@@ -18,5 +18,10 @@ class Post extends \Eloquent {
 	public function user()
 	{
 		return $this->belongsTo('User');
+	}
+
+	public function isLiked($post)
+	{
+
 	}
 }

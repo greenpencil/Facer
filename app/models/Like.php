@@ -3,7 +3,7 @@
 class Like extends \Eloquent {
 	protected $table = 'likes';
 
-	protected $fillable = [];
+	protected $fillable = ['post_id','user_id'];
 
 	public function post()
 	{
