@@ -75,4 +75,22 @@ class UserController extends \BaseController {
 		Auth::user()->hasFriendRequest()->detach($user_id);
 		return Redirect::to('/');
 	}
+
+	public function createProfile($username)
+	{
+		$user = User::whereUsername($username)->firstOrFail();
+
+		$posts = $user->posts;
+		$posts = $posts->sortByDesc(function($post)
+		{
+			return $post->created_at;
+		});
+
+		$likes = Auth::user()->likes->map(function($like)
+		{
+			return $like->post_id;
+		});
+
+		return View::make('pages.profile', ['user' => $user, 'posts' => $posts, 'likes' => $likes]);
+	}
 }

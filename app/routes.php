@@ -40,7 +40,7 @@ Route::get('declinefriend/{user_id}', array('before' => 'auth', 'uses' => 'UserC
 Route::get('newfriend/{user_id}', array('before' => 'auth', 'uses' => 'UserController@newFriendRequest'));
 
 //Routes for profiles
-
+Route::get('profile/{username}', array('before' => 'auth', 'uses' => 'UserController@createProfile'));
 
 // This is all very confusing
 Route::get('test', function()
