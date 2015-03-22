@@ -80,6 +80,8 @@ class UserController extends \BaseController {
 	{
 		$user = User::whereUsername($username)->firstOrFail();
 
+		$friends = $user->hasFriends->merge($user->madeFriends);
+
 		$posts = $user->posts;
 		$posts = $posts->sortByDesc(function($post)
 		{
@@ -91,6 +93,6 @@ class UserController extends \BaseController {
 			return $like->post_id;
 		});
 
-		return View::make('pages.profile', ['user' => $user, 'posts' => $posts, 'likes' => $likes]);
+		return View::make('pages.profile', ['user' => $user, 'posts' => $posts, 'likes' => $likes,  'friends' => $friends]);
 	}
 }
