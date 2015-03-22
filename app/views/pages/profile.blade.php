@@ -50,14 +50,16 @@
             </div>
 
             <div class="col-md-6">
-                <div class="create post">
-                    {{ Form::open(array('url' => '/post/new', 'method' => 'post', 'class' => 'form-horizontal')) }}
-                    {{Form::textarea('text', null, array('placeholder' => "What's on your mind?", 'class'=> 'form-control', 'rows'=>'2'))}}
-                    <div class="submit">
-                        {{Form::submit('Post',array('class'=> 'btn btn-primary'))}}
+                @if($user->id == Auth::user()->id)
+                    <div class="create post">
+                        {{ Form::open(array('url' => '/post/new', 'method' => 'post', 'class' => 'form-horizontal')) }}
+                        {{Form::textarea('text', null, array('placeholder' => "What's on your mind?", 'class'=> 'form-control', 'rows'=>'2'))}}
+                        <div class="submit">
+                            {{Form::submit('Post',array('class'=> 'btn btn-primary'))}}
+                        </div>
+                        {{ Form::close() }}
                     </div>
-                    {{ Form::close() }}
-                </div>
+                @endif
                 @foreach($posts as $post)
                     <div class="post">
                         <div class="title">
