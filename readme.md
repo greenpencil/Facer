@@ -14,9 +14,13 @@ It is designed as a Facebook themed robust base for developing more complex and 
 - Likes [X]
 - Comments [X]
 - Friendships [X]
-- User Profiles
+- User Profiles [X]
+- Notifications
+- Image Galleries
+- Custom Attributes (Age, School, etc...)
 - Messaging
 - Events
+- Groups
 
 ### Setup
 
