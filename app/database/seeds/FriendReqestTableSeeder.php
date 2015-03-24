@@ -11,10 +11,7 @@ class FriendRequestTableSeeder extends Seeder {
 
         foreach(range(1, 10) as $index)
         {
-            FriendRequest::create(array(
-                'user_id' => 11,
-                'user_id_2' => $faker->randomDigitNotNull,
-            ));
+            User::find(11)->hasFriendRequest()->attach($faker->randomDigitNotNull);
         }
     }
 

@@ -3,10 +3,10 @@
 class Attribute extends \Eloquent {
 	protected $table = 'attributes';
 
-	protected $fillable = ['name', 'profile_text', 'desc', 'icon'];
+	protected $fillable = ['user_id', 'attribute_id', 'value'];
 
 	public function hasUsers()
 	{
-		return $this->belongsToMany('User')->withPivot('value');
+		return $this->belongsToMany('User', 'user_attributes', 'user_id', 'attribute_id')->withTimestamps();
 	}
 }

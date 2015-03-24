@@ -82,11 +82,16 @@ class UserController extends \BaseController {
 
 		$friends = $user->hasFriends->merge($user->madeFriends);
 
-		$posts = $user->posts;
-		$posts = $posts->sortByDesc(function($post)
-		{
-			return $post->created_at;
-		});
+		foreach($friends as $friend) {
+			if($friend->id == Auth::user()->id) {
+				$posts = $user->posts;
+				$posts = $posts->sortByDesc(function ($post) {
+					return $post->created_at;
+				});
+			} else {
+
+			}
+		}
 
 		$likes = Auth::user()->likes->map(function($like)
 		{
