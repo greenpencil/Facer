@@ -33,19 +33,9 @@
         <div role="tabpanel" class="tab-pane active" id="timeline">
             <div class="col-md-6">
                 <div class="create post">
-                    kjhdsjkhfdskjh
-                </div>
-                <div class="create post">
-                    dsffsadfasd
-                </div>
-                <div class="create post">
-                    dsffsadfasd
-                </div>
-                <div class="create post">
-                    dsffsadfasd
-                </div>
-                <div class="create post">
-                    dsffsadfasd
+                    @foreach($attributes as $attribute)
+                                <p><i class="fa {{$attribute->icon}}"></i> {{str_replace("%".strtoupper($attribute->name)."%", $attribute->pivot->value, $attribute->profile_text)}}</p>
+                    @endforeach
                 </div>
             </div>
 
@@ -133,9 +123,23 @@
                 @endforeach
             </div>
         </div>
-        <div role="tabpanel" class="tab-pane" id="about">...</div>
+        <div role="tabpanel" class="tab-pane" id="about">
+            <div class="panel panel-default">
+                <div class="panel-heading">About {{$user->first_name}}</div>
+                <div class="panel-body">
+                    <div class="row">
+                            @foreach($attributes as $attribute)
+                            <div class="col-md-12">
+                                    <div class="profile-panel">
+                                        <i class="fa {{$attribute->icon}}"></i> {{str_replace("%".strtoupper($attribute->name)."%", $attribute->pivot->value, $attribute->profile_text)}}
+                                    </div>
+                                </div>
+                            @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
         <div role="tabpanel" class="tab-pane" id="friends">
-
             <div class="panel panel-default">
                 <div class="panel-heading">Friends</div>
                 <div class="panel-body">

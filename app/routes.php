@@ -45,17 +45,8 @@ Route::get('profile/{username}', array('before' => 'auth', 'uses' => 'UserContro
 // This is all very confusing
 Route::get('test', function()
 {
-    foreach (Auth::user()->hasFriends as $user)
+    foreach(User::find(11)->hasAttributes()->get() as $attribute)
     {
-        echo $user->first_name . "<br>";
-    }
-    foreach (Auth::user()->madeFriends as $user)
-    {
-        echo $user->first_name . "<br>";
-    }
-
-    foreach (Auth::user()->hasFriendRequest as $user)
-    {
-        echo $user->first_name . "<br>";
+        echo "<i class='fa ".$attribute->icon."'></i>".str_replace("%".strtoupper($attribute->name)."%", $attribute->pivot->value, $attribute->profile_text)."</br>";
     }
 });

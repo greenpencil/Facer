@@ -80,6 +80,8 @@ class UserController extends \BaseController {
 	{
 		$user = User::whereUsername($username)->firstOrFail();
 
+		$posts = $user->posts();
+
 		$friends = $user->hasFriends->merge($user->madeFriends);
 
 		foreach($friends as $friend) {
@@ -98,6 +100,9 @@ class UserController extends \BaseController {
 			return $like->post_id;
 		});
 
-		return View::make('pages.profile', ['user' => $user, 'posts' => $posts, 'likes' => $likes,  'friends' => $friends]);
+		$attributes = $user->hasAttributes()->get();
+
+		return View::make('pages.profile', ['user' => $user, 'posts' => $posts, 'likes' => $likes
+			,  'friends' => $friends,  'attributes' => $attributes]);
 	}
 }

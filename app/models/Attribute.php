@@ -7,6 +7,6 @@ class Attribute extends \Eloquent {
 
 	public function hasUsers()
 	{
-		return $this->belongsToMany('User', 'user_attributes', 'user_id', 'attribute_id')->withTimestamps();
+		return $this->belongsToMany('User', 'users_attributes', 'attribute_id', 'user_id')->withPivot('value')->withTimestamps();
 	}
 }
