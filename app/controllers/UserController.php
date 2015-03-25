@@ -66,21 +66,21 @@ class UserController extends \BaseController {
 	public function declineFriendRequest($user_id)
 	{
 		Auth::user()->hasFriendRequest()->detach($user_id);
-		return Redirect::to('/');
+		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
 
 	public function acceptFriendRequest($user_id)
 	{
 		Auth::user()->madeFriends()->attach($user_id);
 		Auth::user()->hasFriendRequest()->detach($user_id);
-		return Redirect::to('/');
+		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
 
 	public function createProfile($username)
 	{
 		$user = User::whereUsername($username)->firstOrFail();
 
-		$posts = $user->posts();
+		$posts = $user->posts;
 
 		$friends = $user->hasFriends->merge($user->madeFriends);
 
@@ -100,9 +100,12 @@ class UserController extends \BaseController {
 			return $like->post_id;
 		});
 
+		// The Attributes which appear on the newsfeed, there is a better way of doing this but this will do
+		$importantAtt = $user->hasAttributes()->whereIn('id', array(1, 2))->get();
+
 		$attributes = $user->hasAttributes()->get();
 
 		return View::make('pages.profile', ['user' => $user, 'posts' => $posts, 'likes' => $likes
-			,  'friends' => $friends,  'attributes' => $attributes]);
+			,  'friends' => $friends, 'importantAtt' => $importantAtt,  'attributes' => $attributes]);
 	}
 }

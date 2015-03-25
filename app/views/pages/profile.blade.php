@@ -4,6 +4,7 @@
     <div class="row profile-nav-row" style="height: 350px;
             border-bottom: 0px;
             background-image: url('../images/banner/{{$user->id}}.png');
+            margin-top: -30px;
             ">
         <div class="profile-details">
             <div class="col-md-2">
@@ -33,8 +34,10 @@
         <div role="tabpanel" class="tab-pane active" id="timeline">
             <div class="col-md-6">
                 <div class="create post">
-                    @foreach($attributes as $attribute)
-                                <p><i class="fa {{$attribute->icon}}"></i> {{str_replace("%".strtoupper($attribute->name)."%", $attribute->pivot->value, $attribute->profile_text)}}</p>
+                    @foreach($importantAtt as $attribute)
+                        <p>
+                            <i class="fa {{$attribute->icon}}"></i> {{str_replace("%".strtoupper($attribute->name)."%", $attribute->pivot->value, $attribute->profile_text)}}
+                        </p>
                     @endforeach
                 </div>
             </div>
@@ -128,13 +131,13 @@
                 <div class="panel-heading">About {{$user->first_name}}</div>
                 <div class="panel-body">
                     <div class="row">
-                            @foreach($attributes as $attribute)
+                        @foreach($attributes as $attribute)
                             <div class="col-md-12">
-                                    <div class="profile-panel">
-                                        <i class="fa {{$attribute->icon}}"></i> {{str_replace("%".strtoupper($attribute->name)."%", $attribute->pivot->value, $attribute->profile_text)}}
-                                    </div>
+                                <div class="profile-panel">
+                                    <i class="fa {{$attribute->icon}}"></i> {{str_replace("%".strtoupper($attribute->name)."%", $attribute->pivot->value, $attribute->profile_text)}}
                                 </div>
-                            @endforeach
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -151,7 +154,8 @@
                             @foreach($friends as $friend)
                                 <div class="col-md-6">
                                     <div class="profile-panel">
-                                        <img src="../images/profile/{{ $friend->id }}.png" height="60px" class="img-rounded">
+                                        <img src="../images/profile/{{ $friend->id }}.png" height="60px"
+                                             class="img-rounded">
                                         <a href="../profile/{{ $friend->username }}">{{ $friend->first_name }} {{ $friend->last_name }}</a>
                                     </div>
                                 </div>
