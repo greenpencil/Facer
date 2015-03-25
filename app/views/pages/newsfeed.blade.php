@@ -68,7 +68,27 @@
 						</div>
 					@elseif($post->likes->count() == 3)
 						<div class="likes">
-							<a href="">{{$post->likes->count()}} people</a> like this.
+							<a data-toggle="modal" data-target="#likes-{{$post->id}}" href="">{{$post->likes->count()}} people</a> like this.
+						</div>
+
+						<div class="modal fade" id="likes-{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="likes-label-{{$post->id}}" aria-hidden="true">
+							<div class="modal-dialog" style="width: 350px;">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="likes-label-{{$post->id}}">People who like this</h4>
+									</div>
+									<div class="modal-body">
+										@foreach($post->likes as $like)
+											<div class="row" style="margin-bottom: 10px;">
+												<div class="col-md-2"><img src="../images/profile/{{$like->user->id}}.png" height="50px" class="img-rounded avatar"></div>
+												<div class="col-md-10">
+													<a href="/profile/{{$like->user->username}}">{{ $like->user->first_name }} {{ $like->user->last_name }}</a>
+												</div>
+											</div>
+										@endforeach</div>
+								</div>
+							</div>
 						</div>
 					@endif
 					<div class="collapse" id="post-comment-{{ $post->id}}" style="padding: 10px 30px 0 30px;">
