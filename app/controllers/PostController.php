@@ -16,7 +16,7 @@ class PostController extends \BaseController {
 			return Redirect::to('/')->withErrors($validator)->withInput();
 		}
 		Post::create($data);
-		return Redirect::to('/');
+		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
 
 	public function comment($post_id)
@@ -26,7 +26,7 @@ class PostController extends \BaseController {
 			'text' => Input::get('text'),
 			'user_id' => Auth::user()->id
 		));
-		return Redirect::to('/');
+		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
 
 	public function like($post_id)
@@ -35,13 +35,13 @@ class PostController extends \BaseController {
 			'post_id' => $post_id,
 			'user_id' => Auth::user()->id
 		));
-		return Redirect::to('/');
+		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
 
 	public function unlike($post_id)
 	{
 		Like::where('post_id', '=', $post_id)->where('user_id', '=', Auth::user()->id)->delete();
-		return Redirect::to('/');
+		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
 
 }

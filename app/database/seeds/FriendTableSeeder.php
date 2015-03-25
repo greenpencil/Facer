@@ -9,12 +9,9 @@ class FriendTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 30) as $index)
+		foreach(range(1, 10) as $index)
 		{
-			Friend::create(array(
-				'user_id' => $faker->randomDigitNotNull,
-				'user_id_2' => $faker->randomDigitNotNull,
-			));
+			User::find($faker->randomDigitNotNull)->hasFriends()->attach($faker->randomDigitNotNull);
 		}
 	}
 
