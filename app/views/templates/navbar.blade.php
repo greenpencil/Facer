@@ -83,11 +83,46 @@
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false"><i class="fa fa-globe"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Test1</a></li>
-                                <li><a href="#">Test2</a></li>
-                                <li><a href="#">Test3</a></li>
+                               aria-expanded="false">
+                                <i class="fa fa-globe"></i>
+                                @if(Auth::user()->hasNotifications()->count() > 0)
+                                    <span class="badge">{{Auth::user()->hasNotifications->count()}}</span>
+                                @endif
+                            </a>
+                            <ul class="requests dropdown-menu" role="menu">
+                                @if(Auth::user()->hasNotifications->count() > 0)
+                                    @foreach (Auth::user()->hasNotifications as $notification)
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <img src="/images/profile/{{ $notification->poser_id }}.png" height="40px"
+                                                     class="img-rounded avatar">
+                                            </div>
+                                            <div class="col-md-10">
+                                                <li>
+                                                    <?php
+                                                        $text = $notification->hook->text;
+
+                                                    if(strpos($text, '%POSTER%')!== false)
+                                                    {
+                                                        $text = str_replace('%POSTER%', '<a href="/profile/'. $notification->poster->username.'">'. $notification->poster->first_name.' '. $notification->poster->last_name .'</a>', $text);
+                                                    }
+
+                                                    if(strpos($text, '%POST%')!== false)
+                                                    {
+                                                        $text = str_replace('%POST%', '<a href="/view/'. $notification->post->post_id.'">'. $notification->post->text. '</a>', $text);
+                                                    }
+                                                    echo $text;
+                                                    ?>
+                                                </li>
+                                                <li>{{ $notification->created_at->diffForHumans() }}</li>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <div class="row">
+                                        No Notifications! :(
+                                    </div>
+                                @endif
                             </ul>
                         </li>
                         <li class="dropdown">

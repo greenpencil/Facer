@@ -26,6 +26,9 @@ class PostController extends \BaseController {
 			'text' => Input::get('text'),
 			'user_id' => Auth::user()->id
 		));
+
+		App::make('HookController')->newComment(Post::find($post_id)->user->id, Auth::user()->id, $post_id);
+
 		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
 
@@ -35,6 +38,8 @@ class PostController extends \BaseController {
 			'post_id' => $post_id,
 			'user_id' => Auth::user()->id
 		));
+		App::make('HookController')->newLike(Post::find($post_id)->user->id, Auth::user()->id, $post_id);
+
 		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
 
