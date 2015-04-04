@@ -23,6 +23,7 @@ Route::get('logout', array('uses' => 'UserController@logout'));
 
 // Routes for the post system
 Route::post('post/new', array('before' => 'auth', 'uses' => 'PostController@create'));
+Route::post('post/view/{post_id}', array('before' => 'auth', 'uses' => 'PostController@create'));
 //Route::post('/post/delete', array('before' => 'auth','uses' => 'PostController@remove'));
 
 // Routes for the comment system
