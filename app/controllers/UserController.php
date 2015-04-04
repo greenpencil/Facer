@@ -73,7 +73,7 @@ class UserController extends \BaseController {
 	{
 		Auth::user()->madeFriends()->attach($user_id);
 		Auth::user()->hasFriendRequest()->detach($user_id);
-		App::make('HookController')->acceptedRequest($user_id, Auth::user()->id);
+		App::make('NotificationController')->acceptedRequest($user_id, Auth::user()->id);
 		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
 

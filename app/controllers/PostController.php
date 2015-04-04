@@ -19,6 +19,16 @@ class PostController extends \BaseController {
 		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
 
+	public function makePost($post_id)
+	{
+		$post = Post::find($post_id);
+		$likes = Auth::user()->likes->map(function($like)
+		{
+			return $like->post_id;
+		});
+		return View::make('pages.post', ['post' => $post,'likes' => $likes]);
+	}
+
 	public function comment($post_id)
 	{
 		Comment::create(array(
@@ -27,7 +37,7 @@ class PostController extends \BaseController {
 			'user_id' => Auth::user()->id
 		));
 
-		App::make('HookController')->newComment(Post::find($post_id)->user->id, Auth::user()->id, $post_id);
+		App::make('NotificationController')->newComment(Post::find($post_id)->user->id, Auth::user()->id, $post_id);
 
 		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
@@ -38,7 +48,7 @@ class PostController extends \BaseController {
 			'post_id' => $post_id,
 			'user_id' => Auth::user()->id
 		));
-		App::make('HookController')->newLike(Post::find($post_id)->user->id, Auth::user()->id, $post_id);
+		App::make('NotificationController')->newLike(Post::find($post_id)->user->id, Auth::user()->id, $post_id);
 
 		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
