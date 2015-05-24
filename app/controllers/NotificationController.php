@@ -1,6 +1,6 @@
 <?php
 
-class HookController extends \BaseController
+class NotificationController extends \BaseController
 {
 	function newComment($user_id, $poster_id, $post_id)
 	{
@@ -39,5 +39,11 @@ class HookController extends \BaseController
 			"hook_id" => "4",
 			"post_id" => $post_id
 		));
+	}
+
+	function remove($notification_id)
+	{
+		Notification::find($notification_id)->delete();
+		return Redirect::to($_SERVER['HTTP_REFERER']);
 	}
 }

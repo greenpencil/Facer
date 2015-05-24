@@ -94,11 +94,11 @@
                                     @foreach (Auth::user()->hasNotifications as $notification)
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <img src="/images/profile/{{ $notification->poser_id }}.png" height="40px"
+                                                <img src="/images/profile/{{ $notification->poster_id }}.png" height="40px"
                                                      class="img-rounded avatar">
                                             </div>
-                                            <div class="col-md-10">
-                                                <li>
+                                            <div class="col-md-9">
+                                            <p>
                                                     <?php
                                                         $text = $notification->hook->text;
 
@@ -109,12 +109,15 @@
 
                                                     if(strpos($text, '%POST%')!== false)
                                                     {
-                                                        $text = str_replace('%POST%', '<a href="/view/'. $notification->post->post_id.'">'. $notification->post->text. '</a>', $text);
+                                                        $text = str_replace('%POST%', '<a href="/view/'. $notification->post_id .'">'. $notification->post->text. '</a>', $text);
                                                     }
                                                     echo $text;
                                                     ?>
-                                                </li>
+                                            </p>
                                                 <li>{{ $notification->created_at->diffForHumans() }}</li>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a href="/notification/remove/{{$notification->id}}">X</a>
                                             </div>
                                         </div>
                                     @endforeach

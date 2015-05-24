@@ -23,7 +23,7 @@ Route::get('logout', array('uses' => 'UserController@logout'));
 
 // Routes for the post system
 Route::post('post/new', array('before' => 'auth', 'uses' => 'PostController@create'));
-Route::post('post/view/{post_id}', array('before' => 'auth', 'uses' => 'PostController@create'));
+Route::get('view/{post_id}', array('before' => 'auth', 'uses' => 'PostController@makePost'));
 //Route::post('/post/delete', array('before' => 'auth','uses' => 'PostController@remove'));
 
 // Routes for the comment system
@@ -33,6 +33,9 @@ Route::post('comment/new/{post_id}', array('before' => 'auth', 'uses' => 'PostCo
 // Routes for liking posts
 Route::get('like/{post_id}', array('before' => 'auth', 'uses' => 'PostController@like'));
 Route::get('unlike/{post_id}', array('before' => 'auth', 'uses' => 'PostController@unlike'));
+
+// Routes for notifications
+Route::get('notification/remove/{notification_id}', array('before' => 'auth', 'uses' => 'NotificationController@remove'));
 
 
 // Routes for friends

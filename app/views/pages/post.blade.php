@@ -1,36 +1,8 @@
 @extends('templates.default')
 
 @section('content')
-	@if (Session::has('login_success'))
-		<div class="alert alert-dismissible alert-success">
-			<button type="button" class="close" data-dismiss="alert">×</button>
-			<strong>Success! </strong> {{ Session::get('login_success') }}
-		</div>
-	@endif
-	@if ( $errors->count() > 0 )
-		<div class="alert alert-dismissible alert-danger">
-			<button type="button" class="close" data-dismiss="alert">×</button>
-			<strong>Oh snap!</strong> Some errors have occurred, check them and try again
-			<ul>
-				@foreach( $errors->all() as $message )
-					<li>{{ $message }}</li>
-				@endforeach
-			</ul>
-		</div>
-	@endif
-
-	<div class="col-md-2">@include('templates.sidenav')</div>
+	<div class="col-md-2"></div>
 	<div class="col-md-10">
-		<div class="create post">
-			{{ Form::open(array('url' => '/post/new', 'method' => 'post', 'class' => 'form-horizontal')) }}
-				{{Form::textarea('text', null, array('placeholder' => "What's on your mind?", 'class'=> 'form-control', 'rows'=>'2'))}}
-				<div class="submit">
-					{{Form::submit('Post',array('class'=> 'btn btn-primary'))}}
-				</div>
-			{{ Form::close() }}
-		</div>
-
-		@foreach($posts as $post)
 			<div class="post">
 				<div class="title">
 					<img src="../images/profile/{{$post->user->id}}.png" height="50px" class="img-rounded avatar">
@@ -113,6 +85,5 @@
 					@endforeach
 				</div>
 			</div>
-		@endforeach
 	</div>
 @stop
