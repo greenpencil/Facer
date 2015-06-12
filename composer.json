@@ -6,12 +6,8 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"barryvdh/laravel-ide-helper": "~1.11",
 	  	"fzaninotto/faker": "v1.3.0"
 	},
-  	"require-dev": {
-		"way/generators": "~2.0"
-  	 },
 	"autoload": {
 		"classmap": [
 			"app/commands",
